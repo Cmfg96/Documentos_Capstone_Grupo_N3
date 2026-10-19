@@ -86,7 +86,7 @@ El proyecto usa una **metodología híbrida PMBOK + Scrum**:
 
 **¿Por qué híbrida?** El plazo académico fijo de 18 semanas exige hitos comprometidos (PMBOK), mientras que las reglas del negocio (cupones, puntos, reparto) se descubren al construir (Scrum). Cascada pura fue descartada porque los requisitos cambiaron en la semana 7 (SC-02); Scrum puro fue descartado porque la asignatura exige planes formales de costo, riesgos y adquisiciones.
 
-Detalle completo: [`02-Metodologia/Metodologia_Hibrida_PMBOK_Scrum.md`](Fase2/Evidencias%20Grupales/02-Metodologia/Metodologia_Hibrida_PMBOK_Scrum.md)
+Detalle completo: [`02-Metodologia/Metodologia_Hibrida_PMBOK_Scrum.md`](Capstone/Fase2/Evidencias%20Grupales/02-Metodologia/Metodologia_Hibrida_PMBOK_Scrum.md)
 
 ---
 
@@ -112,7 +112,7 @@ Servicios externos
 
 La clave frontend (`anon`) es pública por diseño y está protegida por RLS. Las claves secretas (`service_role`, `MP_ACCESS_TOKEN`, `OPENFACTURA_API_KEY`) viven solo en las Edge Functions y nunca en el código del cliente.
 
-Detalle completo: [`05-Diseno/Arquitectura.md`](Fase2/Evidencias%20Grupales/05-Diseno/Arquitectura.md) · Diagramas UML: [`05-Diseno/Diagramas_UML.md`](Fase2/Evidencias%20Grupales/05-Diseno/Diagramas_UML.md)
+Detalle completo: [`05-Diseno/Arquitectura.md`](Capstone/Fase2/Evidencias%20Grupales/05-Diseno/Arquitectura.md) · Diagramas UML: [`05-Diseno/Diagramas_UML.md`](Capstone/Fase2/Evidencias%20Grupales/05-Diseno/Diagramas_UML.md)
 
 ---
 
@@ -124,16 +124,35 @@ Befine Store incorpora tres elementos diferenciadores respecto a una tienda gen�
 2. **Seguridad por diseño** — RLS habilitado en las 21 tablas, `crear_pedido()` recalcula precios desde la BD (ignora los enviados por el cliente), sistema de roles y permisos configurable por el dueño.
 3. **Costo cero de plataforma** — elimina la suscripción mensual a Shopify; el costo anual total conocido es $508.795 CLP (servicios de facturación y certificado digital), financiado por el cliente.
 
-Detalle completo: [`07-Operacion/Innovacion_y_Valor.md`](Fase2/Evidencias%20Grupales/07-Operacion/Innovacion_y_Valor.md)
+Detalle completo: [`07-Operacion/Innovacion_y_Valor.md`](Capstone/Fase2/Evidencias%20Grupales/07-Operacion/Innovacion_y_Valor.md)
 
 ---
 
 ## Estructura del repositorio de documentación
 
-La documentación de la Fase 2 está en `Fase2/Evidencias Grupales/` (la de la Fase 1, en `Capstone/Fase1/`).
+Organizada según la pauta de evidencias de la asignatura:
 
 ```
-📄 2.4_GuiaEstudiante…, Informe_Evidencias…   Informe de Avance (Guía 2.4) e Informe de Evidencias con capturas
+Capstone/
+├── Fase1/
+│   ├── Evidencias individuales/   Autoevaluaciones (1.1, 1.3) y diarios de reflexión (1.2)
+│   └── Evidencias Grupales/       Guía 1.5 (Definición Proyecto APT), cronograma y presentación
+├── Fase2/
+│   ├── Evidencias individuales/   Diarios de reflexión 2.1
+│   ├── Evidencias Grupales/       Informe de Avance (Guía 2.4), Informe Final (Guía 2.6, pendiente),
+│   │                              Informe de Evidencias y la documentación completa (01 a 09)
+│   └── Evidencias Proyecto/       Copias organizadas según pauta (ver su README)
+│       ├── Presentacion Proyecto/       ⏳ pendiente
+│       ├── Evidencias de documentacion/
+│       └── Evidencias de sistema/
+│           ├── Aplicacion/
+│           └── Base de datos/
+└── Fase3/                         ⏳ pendiente
+```
+
+Contenido de `Fase2/Evidencias Grupales/`:
+
+```
 📁 01-Inicio/          Acta de constitución y documento de inicio del proyecto
 📁 02-Metodologia/     Metodología híbrida PMBOK + Scrum (declaración y justificación)
 📁 03-Scrum/           Product Vision, Product Backlog, Sprint Backlogs, DoD, Retrospectivas
