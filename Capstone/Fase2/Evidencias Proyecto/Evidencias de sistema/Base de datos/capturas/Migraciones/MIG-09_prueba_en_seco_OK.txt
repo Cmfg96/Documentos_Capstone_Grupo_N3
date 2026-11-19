@@ -1,0 +1,5 @@
+Prueba en seco migración 09 (reparto: entregados de hoy) — Supabase SQL Editor — 11-nov-2026
+ERROR:  P0001: PRUEBA EN SECO 09 (todo se deshace): RESULTADOS
+T01 un atrasado entregado hoy aparece en el reparto de hoy: OK
+T02 un pedido entregado ya no se marca como atrasado: OK
+CONTEXT:  PL/pgSQL function inline_code_block line 32 at RAISE

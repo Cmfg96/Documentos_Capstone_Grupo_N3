@@ -1,0 +1,16 @@
+Prueba en seco migración 02 (reparto, WhatsApp y roles) — Supabase SQL Editor — 11-nov-2026
+ERROR:  P0001: PRUEBA EN SECO 02 (todo se deshace): RESULTADOS
+T01 el chofer reparte y ya no ve todos los pedidos: OK
+T02 el reparto trae el pedido pagado con dirección y productos: OK
+T03 un pedido sin pagar no aparece en el reparto: OK
+T04 el chofer no lee la tabla de pedidos (RLS): OK
+T05 "En camino": WhatsApp listo y queda en el historial con el chofer: OK
+T06 no se marca dos veces "En camino": OK
+T07 "Entregado" con resumen y se puede reenviar el aviso: OK
+T08 un cliente no ve ni marca repartos: OK
+T09 solo el admin busca cuentas por correo: OK
+T10 el admin asigna el rol chofer y queda registrado: OK
+T11 nadie cambia su propio rol: OK
+T12 quitar un admin (queda otro) y listar el equipo con correo: OK
+T13 un chofer no asigna roles: OK
+CONTEXT:  PL/pgSQL function inline_code_block line 135 at RAISE

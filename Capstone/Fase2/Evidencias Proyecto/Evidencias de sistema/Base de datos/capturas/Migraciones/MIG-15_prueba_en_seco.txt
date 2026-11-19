@@ -1,0 +1,18 @@
+Migración 15 — Despacho gratis desde $7.000 en todas las comunas
+Prueba en seco ejecutada en Supabase (SQL Editor) el 17-nov-2026 por Iván Rodríguez.
+Archivo: 00_Material_Claude/PRUEBA_EN_SECO_15.sql (migración 15 + prueba). Termina con error intencional: todo se deshace.
+
+ERROR:  P0001: PRUEBA EN SECO 15 (todo se deshace): RESULTADOS
+T01 ninguna zona activa con despacho $0: OK
+T02 Quilicura bajo $7000 (subtotal 5000) cobra $2.500: OK
+T03 Quilicura desde $7000 (subtotal 7500) despacho gratis: OK
+T04 Huechuraba bajo el mínimo sigue en $2.500: OK
+T05 Huechuraba desde el mínimo, despacho gratis: OK
+T06 el pedido guarda la versión 2026-11-17 de los textos legales: OK
+CONTEXT:  PL/pgSQL function inline_code_block line 44 at RAISE
+
+Aplicada en producción el 17-nov-2026 (APLICAR_15.sql): "Success. No rows returned".
+Verificación en la vista previa (ivan.befine-store.pages.dev), Quilicura:
+ - 2 recargas ($5.000): despacho $2.500, total $7.500, "Te faltan $2.000 para el envío gratis".
+ - 3 recargas ($7.500): despacho Gratis, total $7.500, "¡Tu compra tiene envío gratis!".
+Pruebas unitarias: 116/116 OK (CP-U08a actualizado, CP-U08d nuevo).

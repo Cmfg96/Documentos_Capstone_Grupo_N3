@@ -1,0 +1,8 @@
+Migración 11 (registro del correo de confirmación de compra) — Supabase SQL Editor — 11-nov-2026
+PRUEBA EN SECO:
+ERROR:  P0001: PRUEBA EN SECO 11 (todo se deshace): RESULTADOS
+T01 el cliente no puede marcar el correo como enviado: OK
+T02 se reserva solo el pedido pagado (no el pendiente): OK
+T03 un pedido no se reserva dos veces (sin correos duplicados): OK
+CONTEXT:  PL/pgSQL function inline_code_block line 37 at RAISE
+APLICACIÓN: Success. No rows returned

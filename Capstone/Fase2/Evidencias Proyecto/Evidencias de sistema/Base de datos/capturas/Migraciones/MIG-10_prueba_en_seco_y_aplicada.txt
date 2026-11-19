@@ -1,0 +1,18 @@
+Migración 10 (avisos de reparto por WhatsApp sin emojis) — Supabase SQL Editor — 11-nov-2026
+
+PRUEBA EN SECO:
+ERROR:  P0001: PRUEBA EN SECO 10 (todo se deshace): RESULTADOS
+T01 aviso "en camino" sin emojis: OK
+T02 aviso "entregado" sin emojis, con productos y total: OK
+T03 ejemplo del aviso de entrega:
+*Befine: tu pedido #46 fue entregado*
+Hola, Camila. Tu pedido fue entregado el 11/11/2026 a las 10:46 h.
+Productos:
+- 3 x Recarga Bidón 20 Litros (Con bidón Befine)
+Dirección: Los Tailandeses 1156, Quilicura
+Total pagado: $7.500
+¡Gracias por preferir Befine!
+CONTEXT:  PL/pgSQL function inline_code_block line 34 at RAISE
+
+APLICACIÓN:
+Success. No rows returned

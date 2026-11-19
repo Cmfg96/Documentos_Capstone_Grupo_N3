@@ -1,10 +1,10 @@
-# Evidencias de sistema — Befine Store (Avance Fase 2)
+# Evidencias de sistema — Befine Store (Fase 2)
 
-**Grupo N3 · Capstone PTY4614 · Duoc UC Plaza Norte** · Capturas tomadas el 09-oct-2026 (Sprint 2)
+**Grupo N3 · Capstone PTY4614 · Duoc UC Plaza Norte** · Secciones 1 a 5: Avance (09-oct-2026). Secciones 6 a 11: Entrega Final (15-oct al 18-nov-2026).
 
 Evidencia del estado real de la **aplicación** y de la **base de datos** al cierre del Avance de Fase 2. La tienda se ejecutó con Docker (`docker compose up`) en `http://localhost:8080`, conectada a la base de datos Supabase de producción del proyecto. Las capturas con sufijo **a** son de escritorio y las con **b** son de celular (vista móvil de Chrome).
 
-**Organización de esta carpeta:** `Aplicacion/capturas/` (pruebas, tienda web y Docker), `Aplicacion/gestion/` (repositorio, Kanban, PR, Lighthouse), `Aplicacion/Docker/` (archivos de despliegue), `Base de datos/SQL/` (scripts) y `Base de datos/capturas/` (Supabase). Son copias de `Evidencias Grupales/09-Evidencias-Sistema/`, `05-Diseno/SQL/` y `07-Operacion/Docker/`.
+**Organización de esta carpeta:** `Aplicacion/capturas/` (pruebas, tienda web y Docker del Avance; subcarpetas `Sprint2/`, `Sprint3/` y `Sprint4/` de la Entrega Final), `Aplicacion/pruebas/` (pruebas automatizadas y defectos corregidos), `Aplicacion/gestion/` (repositorio, Kanban, PR, Lighthouse), `Aplicacion/Docker/` (archivos de despliegue), `Base de datos/SQL/` (scripts y migraciones) y `Base de datos/capturas/` (Supabase, migraciones y RLS). Son copias de `Evidencias Grupales/09-Evidencias-Sistema/`, `05-Diseno/SQL/` y `07-Operacion/Docker/`.
 
 Código fuente: [IvnRP/befine-store](https://github.com/IvnRP/befine-store) · Detalle técnico: [Manual Técnico](../../Evidencias%20Grupales/07-Operacion/Manual_Tecnico.md) · Pruebas: [Plan de Pruebas](../../Evidencias%20Grupales/06-Calidad/Plan_de_Pruebas.md)
 
@@ -73,9 +73,86 @@ Capturas tomadas el 10-oct-2026.
 
 ---
 
-## Estado y pendientes (transparencia)
+## Estado al 09-oct-2026 (Avance Fase 2)
 
-- **Pago y pedidos:** la compra llega hasta el checkout validado. La creación del pedido en el servidor, el pago con Mercado Pago y la emisión de boleta/factura con OpenFactura se construyen en los Sprints 3 y 4, por lo que no aparecen en estas capturas.
-- **Panel de administración:** el panel de pedidos (HU-07) se construye en el Sprint 3 y el panel completo (HU-03) en el Sprint 4.
-- **Imágenes de producto:** las tarjetas muestran un fondo azul porque `imagen_url` aún está vacío en la base de datos (ver 12). Se cargarán las fotos antes de la entrega final.
-- El pie de página del sitio dice "datos y colores de demostración". Es un texto de la etapa de maqueta que se actualizará: los productos, precios, comunas y reseñas que muestran estas capturas son reales.
+Las capturas de las secciones 1 a 5 muestran el sistema al cierre del Avance. En ese momento el pago con Mercado Pago, el panel completo y las fotos de productos estaban en construcción. Todo eso quedó implementado y en producción en la Entrega Final (sección 6 en adelante). La boleta automática con OpenFactura se descartó por la situación financiera del cliente (SC-06).
+
+---
+
+# Entrega Final — Fase 2 (Sprints 2 a 4 y Go-Live)
+
+Evidencias del 15-oct al 18-nov-2026. **La tienda está en producción desde el 17-nov-2026 en [aguabefine.cl](https://aguabefine.cl)**, publicada en Cloudflare Pages y conectada a Supabase. Los números de pedido anteriores al 17-nov corresponden a datos de prueba que se borraron antes del Go-Live (con respaldo).
+
+## 6. Sprint 2 — Cuenta y pedido en el servidor — `Aplicacion/capturas/Sprint2/`
+
+| Captura | Qué demuestra |
+|---|---|
+| `HU-01_ingreso_con_Google_panel_cliente_2026-10-15.png` | HU-01: ingreso con Google y panel del cliente. |
+| `HU-06_pedido_11_creado_con_crear_pedido_2026-10-15.png` | HU-06 y SC-03: el pedido se crea solo con la función del servidor `crear_pedido()`, que recalcula precios y despacho. |
+
+## 7. Sprint 3 — Pago e historial — `Aplicacion/capturas/Sprint3/`
+
+| Carpeta | Capturas | Qué demuestra |
+|---|---|---|
+| `Pago_MercadoPago/` | `HU-09_01` a `HU-09_07` | HU-08 y HU-09: checkout, pago aprobado en Mercado Pago (ambiente de prueba), comprobante del pedido #19, vuelta a la tienda con "Pedido confirmado" y oferta de crear cuenta al invitado. |
+| `Historial_Pedidos/` | `HU-18_01` a `HU-18_05` | HU-18: Mis pedidos vacío, lista, detalle, "Volver a pedir" y carrito con el precio vigente. |
+
+## 8. Sprint 4 — Funcionalidades, publicación y Go-Live — `Aplicacion/capturas/Sprint4/`
+
+| Carpeta | Qué demuestra |
+|---|---|
+| `Pago_punta_a_punta/` (`E2E_01` a `E2E_05`) | Prueba de punta a punta del pedido #28: pago aprobado, comprobante, confirmación automática por webhook (pedido "en preparación") y tienda con "¡Pedido confirmado!". |
+| `Aceptacion_Terminos/` (`HU-25_01` a `05`) | HU-25 (Ley 21.719): sin marcar la casilla no se puede pagar; con la casilla se pasa a Mercado Pago y la base registra fecha y versión de la aceptación. |
+| `Disponible_a_pedido/` (`01` a `03`) | HU-22: con stock 0 el producto se vende "a pedido" y el checkout aplaza la fecha de entrega. |
+| `Fotos_productos/` (`01` a `09`) | Fotos reales en el bucket `productos` de Supabase Storage, en catálogo, ficha, carrito, checkout e inicio (escritorio y celular). |
+| `Reparto_Chofer/` (`01` a `08`) | HU-16 y HU-17: vista del chofer, aviso "Entregado" por WhatsApp, corrección M-07 (entregados de hoy), secciones del panel, historial del pedido y aviso sin emojis (M-08). |
+| `Correo_Confirmacion/` (`01` a `06`) | HU-10: correo de confirmación de compra con contenido legal, enviado desde pedidos@aguabefine.cl, y dominio verificado en Resend. |
+| `Clientes/` (`01` y `02`) | HU-23 y CM-03: ficha de cliente bloqueado y checkout que rechaza su compra. |
+| `Ping_Supabase/` | SC-04: flujo programado de GitHub Actions en verde que evita la pausa del plan gratuito. |
+| `Publicacion_Cloudflare/` (`01` y `02`) | CM-04: tienda publicada en Cloudflare Pages; Mercado Pago vuelve solo a la tienda por HTTPS (pedido #50). |
+| `Pago_produccion/` | Credenciales de producción de Mercado Pago activadas. |
+| `Google_OAuth/` (`01` a `03`) | Aplicación de Google publicada "En producción": ingreso con una cuenta que no es de prueba y pantalla de consentimiento. |
+| `Go_Live/` (`01` a `15`) | **Go-Live del 17-nov-2026:** limpieza de datos de prueba, DNS anterior (plan B), dominios activos con SSL, aguabefine.cl en producción, compra real del pedido #1 ($2.000), correo, comprobante, panel, venta en Mercado Pago, devolución total (costo final $0), pedido cancelado y correos de cuenta en español. |
+| `Despacho_7000/` (`00`, `02`, `03`, `05` a `07`) | CM-05: antes (comunas con precio), checkout bajo $7.000 con despacho $2.500, checkout con envío gratis, y producción con la barra de avance y la página Cómo funciona. |
+| `SEO/` (`01` a `06`) | Inicio actualizado, Google Search Console (sitemap enviado, inicio indexado, fichas con fragmentos válidos), Cloudflare Web Analytics activado y productos en el perfil de Google. |
+| `Avisos_Pedidos/` | Edge Function `mp-webhook` publicada sin verificación JWT (la llama Mercado Pago), que confirma el pago y avisa al dueño. |
+
+## 9. Pruebas y defectos corregidos — `Aplicacion/pruebas/`
+
+| Captura | Qué demuestra |
+|---|---|
+| `PU_npm_test_32_de_32_aprobadas_2026-10-15.png` · `npm_test_78_de_78_*` · `npm_test_82_de_82_*` | Crecimiento de las pruebas unitarias automatizadas: 32 → 78 → 82 (hoy 138, todas en verde). |
+| `M-01_consola_ANTES_…` · `M-01_consola_DESPUES_…` | M-01: antes se ofrecía un feriado (08-12) como día de entrega; después no. |
+| `M-02_M-03/` | M-02: el checkout reutiliza el pedido pendiente (#23) y crea uno nuevo solo si cambia el contenido (#24). M-03: el botón de pago se reactiva al volver de Mercado Pago. |
+| `M-05_Club_cuenta/` | M-05: texto del Club corregido en Mi cuenta (celular). |
+| `Stock_sin_bloqueos/` | HU-22: imagen Docker construida y 78 de 78 pruebas en verde. |
+
+## 10. Gestión en GitHub — `Aplicacion/gestion/GitHub/`
+
+| Captura | Qué demuestra |
+|---|---|
+| `GitHub_Kanban_responsables_2026-10-09.png` | Tablero Kanban con responsables. |
+| `GitHub_milestones_sprints_2026-10-09.png` | Milestones por sprint. |
+| `GitHub_HU-02_issue_criterios_aceptacion.png` | Historia de usuario como issue con criterios de aceptación. |
+| `HU-14_CI_01_PR30_descripcion.png` · `HU-14_CI_02_PR30_checks_aprobados.png` | HU-14: Pull Request #30 con la integración continua en verde ("Pruebas unitarias" e "Imagen Docker"). |
+
+## 11. Base de datos: migraciones y seguridad — `Base de datos/`
+
+**Scripts** en [`Base de datos/SQL/migraciones/`](Base%20de%20datos/SQL/migraciones): las 15 migraciones aplicadas en producción (01, 01b, 02 a 11, 14, 15 y 16), cada una con su reversa y su prueba en seco. Al 19-nov-2026 la base tiene 28 tablas, 54 políticas RLS y 13 permisos.
+
+| Captura | Qué demuestra |
+|---|---|
+| `capturas/Migraciones/MIG-02_…` | Prueba en seco de la migración 02 (reparto y roles): T01 a T13 OK, entre ellas "el chofer no lee la tabla de pedidos (RLS)". |
+| `MIG-03_05_…` | Prueba en seco T01 a T07 y aplicación de las migraciones 03 (invitados y confirmación de pago) y 05 (stock sin bloqueos). |
+| `MIG-06_…` · `MIG-07_…` · `MIG-08_…` | Prueba en seco y aplicación de las migraciones 06 (aceptación de Términos), 07 (fotos) y 08 (Club Befine). |
+| `MIG-09_…` · `MIG-10_…` · `MIG-11_…` | Pruebas en seco de reparto (M-07), avisos sin emojis (M-08) y correo de confirmación (sin envíos duplicados). |
+| `MIG-14_…` | Migración 14 (clientes): T01 a T14 OK, entre ellas "el chofer no ve la lista de clientes" y "un cliente bloqueado no puede comprar". |
+| `MIG-15_prueba_en_seco.txt` · `MIG-15_aplicada.png` | Migración 15 (despacho desde $7.000, CM-05): prueba en seco y aplicación. |
+| `capturas/RLS/PS_RLS_cliente_no_ve_pedidos_ajenos_2026-10-17.png` · `HU-01_RLS_admin_befine_ve_pedido_ajeno_2026-10-17.png` | Prueba de seguridad RLS: un cliente no ve pedidos ajenos y el administrador sí. |
+
+## Pendientes de evidencia
+
+- Captura de `npm test` con las 138 pruebas.
+- Lighthouse sobre aguabefine.cl (móvil y escritorio).
+- Kanban final y Pull Request #55 fusionado.
+- Aviso de pedido pagado al dueño (correo o sonido en el panel).

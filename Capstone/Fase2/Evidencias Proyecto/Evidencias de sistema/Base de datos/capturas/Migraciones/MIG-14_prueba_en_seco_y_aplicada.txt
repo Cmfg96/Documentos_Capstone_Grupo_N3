@@ -1,0 +1,23 @@
+Migración 14 · Clientes en el panel (HU-23 · RF-19 ajustado por CM-03) — Befine Store
+Prueba en seco ejecutada y migración aplicada en Supabase (proyecto tbnevbvvwwzpnowxqyps) el 13-nov-2026.
+
+Resultado de la prueba en seco (termina con error intencional: todo se deshace):
+ERROR:  P0001: PRUEBA EN SECO 14 (todo se deshace): RESULTADOS
+T01 el chofer no ve la lista de clientes: OK
+T02 un cliente no ve la lista de clientes: OK
+T03 lista: pedidos pagados, gasto, correo y comuna del cliente: OK
+T04 invitada con pedido aparece (sin pagar = 0 pedidos pagados): OK
+T05 invitado sin pedidos no aparece: OK
+T06 ficha con correo, 2 pedidos y resumen de 1 pagado: OK
+T07 rechaza un celular no válido: OK
+T08 rechaza un RUT no válido: OK
+T09 empresa exige RUT, razón social y giro: OK
+T10 guarda los datos (RUT 22222222-2, celular 569…): OK
+T11 la auditoría guarda quién y solo los campos cambiados: OK
+T12 un cliente bloqueado no puede comprar: OK
+T13 un cliente no edita ni lee la auditoría (RLS): OK
+T14 no bloquea al equipo ni edita invitados: OK
+
+Prueba manual en el panel (13-nov-2026): la cuenta de prueba iv.rodriguezp@duocuc.cl se bloqueó desde
+Clientes → ficha → Bloquear; al intentar pagar, la tienda mostró "Tu cuenta no está habilitada para comprar."
+Capturas: App\Capturas\Sprint4\Clientes\01_Ficha_cliente_bloqueado.png y 02_Checkout_cuenta_bloqueada_no_compra.png
