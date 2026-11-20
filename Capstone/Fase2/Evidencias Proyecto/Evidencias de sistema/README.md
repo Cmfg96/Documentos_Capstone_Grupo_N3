@@ -126,6 +126,8 @@ Evidencias del 15-oct al 18-nov-2026. **La tienda está en producción desde el 
 | `M-02_M-03/` | M-02: el checkout reutiliza el pedido pendiente (#23) y crea uno nuevo solo si cambia el contenido (#24). M-03: el botón de pago se reactiva al volver de Mercado Pago. |
 | `M-05_Club_cuenta/` | M-05: texto del Club corregido en Mi cuenta (celular). |
 | `Stock_sin_bloqueos/` | HU-22: imagen Docker construida y 78 de 78 pruebas en verde. |
+| `npm_test_138_de_138_2026-11-20.txt` | `npm test` sobre `main` (commit 01c138a) en un clon limpio: 138 pruebas, 138 aprobadas, 0 fallidas (20-nov-2026). |
+| `Lighthouse_2026-11-20/` (`LH_01` a `LH_04`) | Lighthouse 13.6 sobre aguabefine.cl. Inicio: móvil 76 / 100 / 100 / 100 y escritorio 97 / 100 / 100 / 100. Catálogo: móvil 83 / 98 / 100 / 100 y escritorio 75 / 98 / 100 / 100 (CLS 0,679, defecto M-09). |
 
 ## 10. Gestión en GitHub — `Aplicacion/gestion/GitHub/`
 
@@ -152,7 +154,5 @@ Evidencias del 15-oct al 18-nov-2026. **La tienda está en producción desde el 
 
 ## Pendientes de evidencia
 
-- Captura de `npm test` con las 138 pruebas.
-- Lighthouse sobre aguabefine.cl (móvil y escritorio).
 - Kanban final y Pull Request #55 fusionado.
 - Aviso de pedido pagado al dueño (correo o sonido en el panel).
