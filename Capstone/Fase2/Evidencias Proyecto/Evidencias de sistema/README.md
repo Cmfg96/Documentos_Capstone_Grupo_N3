@@ -137,6 +137,9 @@ Evidencias del 15-oct al 18-nov-2026. **La tienda está en producción desde el 
 | `GitHub_milestones_sprints_2026-10-09.png` | Milestones por sprint. |
 | `GitHub_HU-02_issue_criterios_aceptacion.png` | Historia de usuario como issue con criterios de aceptación. |
 | `HU-14_CI_01_PR30_descripcion.png` · `HU-14_CI_02_PR30_checks_aprobados.png` | HU-14: Pull Request #30 con la integración continua en verde ("Pruebas unitarias" e "Imagen Docker"). |
+| `G14_PR55_fusionado_y_aprobado_2026-11-18.jpg` · `G15_PR55_checks_Cloudflare_Pages.jpg` · `G16_PR55_CI_pruebas_e_imagen_Docker.jpg` | PR #55 (avisos de pedido pagado y datos de envío para Google) aprobado por Cmfg96 y fusionado el 18-nov: vista previa de Cloudflare Pages desplegada y CI en verde ("Pruebas unitarias" e "Imagen Docker"). |
+| `G17_Kanban_final_parte1_2026-11-20.jpg` · `G18_Kanban_final_parte2_2026-11-20.jpg` | Tablero Kanban final "Befine Store - Desarrollo" (20-nov, después del Go-Live): 55 elementos (issues y PR). Terminados en Done; parciales en In Progress (HU-10 #13, HU-13 #16, HU-21 #37, HU-24 #42, HU-25 #43, HU-31B #48); pendientes fuera del MVP en Todo (HU-16B #32, HU-26 #44, HU-27 #45, HU-28 #46). #39 cerrado como duplicado de #38. |
+| `G19_Issue58_SC06_cerrado_2026-11-20.jpg` | Issue #58 SC-06 (descarte de OpenFactura y del certificado digital): decisión del comité Aprobado, impacto en la línea base de costos ($508.795 → $0) y cierre con referencia al commit f8ec0bb (PR #50). |
 
 ## 11. Base de datos: migraciones y seguridad — `Base de datos/`
 
@@ -154,5 +157,4 @@ Evidencias del 15-oct al 18-nov-2026. **La tienda está en producción desde el 
 
 ## Pendientes de evidencia
 
-- Kanban final y Pull Request #55 fusionado.
 - Aviso de pedido pagado al dueño (correo o sonido en el panel).
